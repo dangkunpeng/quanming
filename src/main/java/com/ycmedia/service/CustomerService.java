@@ -12,19 +12,28 @@ public class CustomerService {
 	@Autowired
 	private CustomerDao customerDao;
 
-	//客户列表
-	public List<Customer> customerList() {return customerDao.customerList();}
+	// 客户列表
+	public List<Customer> customerList() {
+		return customerDao.customerList();
+	}
 
-	//编辑客户
-	public Customer findCustomerById(int id) {return customerDao.findCustomerById(id);}
+	// 编辑客户
+	public Customer findCustomerById(int id) {
+		return customerDao.findCustomerById(id);
+	}
 
-	//添加客户
-	public void addCustomer(Customer customer) {customerDao.addCustomer(customer);}
+	// 添加客户
+	public void addCustomer(Customer customer) {
+		customerDao.addCustomer(customer);
+	}
 
-	//编辑客户
-	public void updateCustomer(Customer customer) {customerDao.updateCustomer(customer);}
+	// 编辑客户
+	public void updateCustomer(Customer customer) {
+		customerDao.updateCustomer(customer);
+	}
 
-	//删除客户
-	public void deleteCustomer(String[] idList) {customerDao.deleteCustomer(idList);
+	// 删除客户
+	public void deleteCustomer(String[] idList) {
+		customerDao.deleteCustomer(idList);
 	}
 }

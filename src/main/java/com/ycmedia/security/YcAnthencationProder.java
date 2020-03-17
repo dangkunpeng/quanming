@@ -25,26 +25,25 @@ public class YcAnthencationProder implements AuthenticationProvider {
 	private UserService userService;
 
 	@Override
-	public Authentication authenticate(Authentication authentication)
-			throws AuthenticationException {
-		    String username = authentication.getName();
-	        String password = (String) authentication.getCredentials();
-	        
-	        System.err.println("用户名："+username);
-	        System.err.println("密码："+password);
-	        
-	        User user =userService.getUserByname(username);
-	        if(user == null){
-	            throw new BadCredentialsException("Username not found.");
-	        }
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		String username = authentication.getName();
+		String password = (String) authentication.getCredentials();
 
-	        //加密过程在这里体现
-	        if (!password.equals(user.getPassword())) {
-	            throw new BadCredentialsException("Wrong password.");
-	        }
+		System.err.println("用户名：" + username);
+		System.err.println("密码：" + password);
 
-	        Collection<? extends GrantedAuthority> authorities = userService.loadUserByUsername(username).getAuthorities();
-	        return new UsernamePasswordAuthenticationToken(user, password, authorities);
+		User user = userService.getUserByname(username);
+		if (user == null) {
+			throw new BadCredentialsException("Username not found.");
+		}
+
+		// 加密过程在这里体现
+		if (!password.equals(user.getPassword())) {
+			throw new BadCredentialsException("Wrong password.");
+		}
+
+		Collection<? extends GrantedAuthority> authorities = userService.loadUserByUsername(username).getAuthorities();
+		return new UsernamePasswordAuthenticationToken(user, password, authorities);
 	}
 
 	@Override

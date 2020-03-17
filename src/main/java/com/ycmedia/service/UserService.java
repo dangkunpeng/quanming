@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
 	 * @param user
 	 */
 	public void save(User user) {
-	 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		if (user.getRole() == "0") {
 			user.setRole("ROLE_ADMIN");
 		} else {
@@ -44,8 +44,7 @@ public class UserService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userDao.findUserByName(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(username + " not found");
@@ -53,6 +52,7 @@ public class UserService implements UserDetailsService {
 		System.err.println(user.getRole() + "正在执行查询角色名称");
 		return new UserDetails() {
 			private static final long serialVersionUID = 3720901165271071386L;
+
 			@Override
 			public Collection<? extends GrantedAuthority> getAuthorities() {
 				List<SimpleGrantedAuthority> auths = new ArrayList<>();
@@ -91,7 +91,7 @@ public class UserService implements UserDetailsService {
 			}
 		};
 	}
-	
+
 	public User getUserByname(String username) {
 		return userDao.findUserByName(username);
 	}

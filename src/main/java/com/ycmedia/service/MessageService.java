@@ -12,11 +12,14 @@ public class MessageService {
 	@Autowired
 	private MessageDao messageDao;
 
-	//短信列表
-	public List<MessageLog> messageList() {return messageDao.messageList();}
+	// 短信列表
+	public List<MessageLog> messageList() {
+		return messageDao.messageList();
+	}
 
-	//删除短信
-	public void deleteMessage(String[] idList) {messageDao.deleteMessage(idList);
+	// 删除短信
+	public void deleteMessage(String[] idList) {
+		messageDao.deleteMessage(idList);
 	}
 
 }

@@ -14,13 +14,11 @@ import com.ycmedia.entity.User;
 /**
  * @author 朱良兴， 可以在这里将用户登录信息存入数据库。
  */
-public class LoginSuccessHandler extends
-		SavedRequestAwareAuthenticationSuccessHandler {
+public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication authentication)
-			throws IOException, ServletException {
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException, ServletException {
 		// 获得授权后可得到用户信息 可使用SUserService进行数据库操作
 		User userDetails = (User) authentication.getPrincipal();
 

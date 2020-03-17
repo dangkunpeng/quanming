@@ -12,6 +12,8 @@ public class OrderService {
 	@Autowired
 	private OrderDao orderDao;
 
-	//订单列表
-	public List<Order> orderList() {return orderDao.orderList();}
+	// 订单列表
+	public List<Order> orderList() {
+		return orderDao.orderList();
+	}
 }
